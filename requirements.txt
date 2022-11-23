@@ -1,0 +1,8 @@
+pycoingecko
+plotly
+mplfinance
+ipykernel
+pandas
+numpy
+nbformat
+equests
