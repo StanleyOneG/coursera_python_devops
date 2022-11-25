@@ -18,7 +18,7 @@
 	"settings": { 
 		"terminal.integrated.defaultProfile.linux": "/bin/bash",
 		"terminal.integrated.cwd": "/srv/coursera_api",
-		"python.pythonPath": "/srv/coursera_api/coursera_api/:/srv/coursera_api/coursera_api/.venv/lib/python3.6/site-packages",
+		// "python.pythonPath": "/srv/coursera_api/coursera_api/:/srv/coursera_api/coursera_api/.venv/lib/python3.6/site-packages",
         "python.autoComplete.extraPaths": ["/srv/coursera_api/coursera_api", "/srv/coursera_api/.venv/lib/"],
         "python.languageServer": "Jedi"
 	},

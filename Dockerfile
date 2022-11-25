@@ -1,4 +1,4 @@
-FROM python:3.9-slim-buster
+FROM stanleyone1/conda
 
 ARG PROJECT_NAME=coursera_api
 ARG GROUP_ID=5000
@@ -25,14 +25,14 @@ WORKDIR /srv/${PROJECT_NAME}
 
 
 
-RUN \
-    apt-get update && apt install -y git && \
-    apt-get install gcc python3-dev -y && \
-    python3 -m venv --system-site-packages $VIRTUAL_ENV 
+# RUN \
+#     apt-get update && apt install -y git && \
+#     apt-get install gcc python3-dev -y && \
+#     python3 -m venv --system-site-packages $VIRTUAL_ENV 
 
-COPY requirements.txt /srv/${PROJECT_NAME}    
+# COPY requirements.txt /srv/${PROJECT_NAME}    
 
-RUN \ 
-    python3 -m pip install --no-cache -r requirements.txt
+# RUN \ 
+#     python3 -m pip install --no-cache -r requirements.txt
 
 USER ${REMOTE_USER}
