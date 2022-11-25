@@ -23,12 +23,16 @@ RUN groupadd --gid ${GROUP_ID} ${PROJECT_NAME} && \
 
 WORKDIR /srv/${PROJECT_NAME}
 
-COPY requirements.txt /srv/${PROJECT_NAME}
+
 
 RUN \
     apt-get update && apt install -y git && \
     apt-get install gcc python3-dev -y && \
-    python3 -m venv --system-site-packages $VIRTUAL_ENV && \
+    python3 -m venv --system-site-packages $VIRTUAL_ENV 
+
+COPY requirements.txt /srv/${PROJECT_NAME}    
+
+RUN \ 
     python3 -m pip install --no-cache -r requirements.txt
 
 USER ${REMOTE_USER}
