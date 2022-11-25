@@ -27,22 +27,12 @@ WORKDIR /srv/${PROJECT_NAME}
 
 RUN \
     apt-get update && apt install -y git && \
-    apt-get install gcc python3-dev wget -y && \
-    wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-aarch64.sh
-
-RUN \
-    bash Miniconda3-latest-Linux-aarch64.sh | yes && \
-    export PATH=/home/debian/anaconda3/bin:$PATH && \
+    apt-get install gcc python3-dev -y && \
     python3 -m venv --system-site-packages $VIRTUAL_ENV 
 
-COPY requirements.txt /srv/${PROJECT_NAME}
-
+COPY requirements.txt /srv/${PROJECT_NAME}    
 
 RUN \ 
     python3 -m pip install --no-cache -r requirements.txt
-
-RUN \
-    conda install -c conda-forge mamba && \
-    mamba install -y bs4==4.10.0 html5lib==1.1
 
 USER ${REMOTE_USER}
