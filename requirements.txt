@@ -7,3 +7,4 @@ numpy
 nbformat
 requests
 randomuser
+lxml==4.6.4
