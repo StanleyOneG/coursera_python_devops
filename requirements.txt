@@ -1,9 +1,0 @@
-pycoingecko
-plotly
-mplfinance
-ipykernel
-pandas
-numpy
-nbformat
-requests
-randomuser

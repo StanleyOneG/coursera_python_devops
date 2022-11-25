@@ -5,9 +5,10 @@ ARG GROUP_ID=5000
 ARG USER_ID=5000
 
 
-ENV VIRTUAL_ENV=/srv/${PROJECT_NAME}/.venv \
+ENV \
+    VIRTUAL_ENV=/srv/${PROJECT_NAME} \
     PATH="$VIRTUAL_ENV/bin:$PATH" \
-    \
+    # \
     # эта переменная среды обеспечивает правильность работы импортов
     PYTHONPATH=/srv/${PROJECT_NAME} \
     # Keeps Python from generating .pyc files in the container
@@ -34,5 +35,14 @@ WORKDIR /srv/${PROJECT_NAME}
 
 # RUN \ 
 #     python3 -m pip install --no-cache -r requirements.txt
+COPY requirements_conda.txt /srv/${PROJECT_NAME}  
+
+RUN /opt/conda/bin/conda install -y \
+    --file requirements_conda.txt
+
+COPY requirements_pip.txt /srv/${PROJECT_NAME}  
+
+RUN /opt/conda/bin/pip install \
+    -r requirements_pip.txt
 
 USER ${REMOTE_USER}
